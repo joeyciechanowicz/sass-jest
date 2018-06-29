@@ -1,5 +1,7 @@
 # sass-jest
 
+[![npm version](https://badge.fury.io/js/sass-jest.svg)](https://badge.fury.io/js/sass-jest)
+
 `sass-jest` is a Sass preproccessor for Jest that lets you test projects with Sass. The API used matches the excellent [sass-true](https://github.com/oddbird/true) library.
 
 # Install
