@@ -79,18 +79,20 @@ _Note: As `@error` is converted to a return, functions that call functions that 
  
 One can use the `assert` mixin to compare the compiled CSS that your code produces.
 ```scss
-@include it('compares two blocks of css') {
-    @include assert {
-        @include output {
-          @include font-size('large');
-        }
-        
-        @include expect {
-            font-size: 2rem;
-            line-height: 3rem;
+@include describe('css comparisons') {
+    @include it('compares two blocks of css') {
+        @include assert {
+            @include output {
+              @include font-size('large');
+            }
+            
+            @include expect {
+                font-size: 2rem;
+                line-height: 3rem;
+            }
         }
     }
- }
+}
 ```
  
 ## Test Environment

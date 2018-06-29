@@ -95,7 +95,7 @@ const functions = {
 			const head = stack[stack.length - 1];
 
 			if (!head.describes) {
-				throw new Error('Can not put a describe inside of an it statement');
+				throw new Error(`Can not put a describe inside of an it statement. Offending describe: "${$name.getValue(0)}"`);
 			}
 
 			head.describes.push(newDescribe);
@@ -120,8 +120,8 @@ const functions = {
 	'__itPush($name)': ($name) => {
 		const describe = stack[stack.length - 1];
 
-		if (!describe.its) {
-			throw new Error('Can not put an "it" statement outside of a describe block');
+		if (!describe || !describe.its) {
+			throw new Error(`it statements must be within a describe block. Offending it: "${$name.getValue(0)}"`);
 		}
 
 		describe.its.push({
@@ -143,7 +143,7 @@ const functions = {
 		const it = stack[stack.length - 1];
 
 		if (!it.asserts) {
-			throw new Error('Can not assert outside of an it statement')
+			throw new Error('Can not assert outside of an "it" statement')
 		}
 
 		it.asserts.push((context) => {

@@ -1,6 +1,6 @@
 {
   "name": "sass-jest",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Unit test Sass using Jest",
   "repository": "https://github.com/joeyciechanowicz/sass-jest",
   "author": "Joey Ciechanowicz",
