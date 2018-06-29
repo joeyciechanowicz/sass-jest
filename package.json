@@ -1,0 +1,39 @@
+{
+  "name": "sass-jest",
+  "version": "0.1.6",
+  "description": "Unit test Sass using Jest",
+  "repository": "https://github.com/joeyciechanowicz/sass-jest",
+  "author": "Joey Ciechanowicz",
+  "license": "MIT",
+  "keywords": [
+    "jest",
+    "sass",
+    "unit-test"
+  ],
+  "main": "transform-sass.js",
+  "scripts": {
+    "test": "LOCAL_DEBUG_SASS_JEST=true jest --no-cache",
+    "test:watch": "LOCAL_DEBUG_SASS_JEST=true jest --watch"
+  },
+  "devDependencies": {
+    "jest": "^23.1.0"
+  },
+  "dependencies": {
+    "node-sass": "^4.9.0",
+    "sass-thematic": "^2.0.4"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "scss"
+    ],
+    "modulePaths": [
+      "<rootDir>/"
+    ],
+    "transform": {
+      "^.+\\.scss$": "<rootDir>/transform-sass.js"
+    },
+    "testRegex": "__tests__/.*\\.(js|scss)$",
+    "testEnvironment": "node"
+  }
+}

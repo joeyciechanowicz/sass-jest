@@ -1,0 +1,59 @@
+@mixin describe($name) {
+  $__stub: __describePush($name);
+
+  @content;
+
+  $__stub: __describePop($name);
+}
+
+@mixin it($name) {
+  $__stub: __itPush($name);
+
+  @content;
+
+  $__stub: __itPop($name);
+}
+
+@mixin assert-equal($actual, $expected) {
+  $__stub: __assertTrue($actual == $expected, $actual, $expected);
+}
+
+@mixin assert-not-equal($actual, $expected) {
+  $__stub: __assertTrue($actual != $expected, $actual, $expected);
+}
+
+@mixin assert-true($actual) {
+  $__stub: __assertTrue($actual == true, $actual, true);
+}
+
+@mixin assert-false($actual) {
+  $stub: __assertFalse($actual == false, $actual, false);
+}
+
+@mixin assert-error-raised($error-message) {
+  $__stub: __assertErrorRaised($error-message);
+}
+
+@mixin assert() {
+  $_name: __assertContentPush();
+
+  /*#{$_name}-start*/
+  @content;
+  /*#{$_name}-end*/
+}
+
+@mixin output() {
+  /*output-start*/
+  .output {
+    @content;
+  }
+  /*output-end*/
+}
+
+@mixin expect() {
+  /*expect-start*/
+  .expect {
+    @content;
+  }
+  /*expect-end*/
+}

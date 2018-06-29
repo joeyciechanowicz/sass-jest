@@ -1,0 +1,75 @@
+@import '../sass-jest';
+
+@function throws-error() {
+  @error "Thrown error"
+}
+
+@include describe ('Error capture tests') {
+  @include it ('Captures the error and asserts its value') {
+    $dummy: throws-error();
+    @include assert-error-raised ("Thrown error");
+  }
+}
+
+@include describe('Asserts') {
+  @include describe('Equal') {
+    @include it('compares a simple value') {
+      $actual: 5px;
+      @include assert-equal($actual, $actual);
+    }
+
+    @include it('compare a complex value') {
+      $actual: 5px 6px 1px;
+      @include assert-equal($actual, $actual);
+    }
+  }
+
+  @include describe('Not equal') {
+    @include it('compares a complex value to something else') {
+      @include assert-not-equal(5px 4px, 1px);
+    }
+  }
+
+  @include describe('True') {
+    @include it('compare to true') {
+      @include assert-true(true);
+    }
+  }
+
+  @include describe('False') {
+    @include it('compare to false') {
+      @include assert-false(false);
+    }
+  }
+
+  @include describe('Output') {
+    @include it('compares two blocks of css') {
+      @include assert {
+        @include output {
+          z-index: -1;
+          height: 11px;
+        }
+
+        @include expect {
+          // A comment here that shouldn't make a difference
+          z-index: -1;
+          height: 11px;
+        }
+      }
+    }
+
+    @include it('compares two blocks of css again') {
+      @include assert {
+        @include output {
+          z-index: -1;
+          height: 11px;
+        }
+
+        @include expect {
+          z-index: -1;
+          height: 11px;
+        }
+      }
+    }
+  }
+}
