@@ -110,7 +110,7 @@ If you do not have any tests that require `jsdom` then you can set Jest's test e
  
 ## Todo
 
-1. Add switch to turn of `@error` converting
+1. Add switch to turn off `@error` converting
 2. Provide better error messages when a test fails
 3. Support source maps to show where in the sass file an error was raised
 4. Parse output blocks into an AST and strip whitespace/comments for less fragile comparisons 
