@@ -223,6 +223,9 @@ module.exports = {
 	process: function (source, fullFilename, config, options) {
 		const filepath = path.dirname(fullFilename);
 
+		// TODO: See if we can use node-sass import functions to handle doing a regex find/replace rather than a full
+		// AST search of all code
+
 		const ast = thermatic.parseASTSync({
 			cwd: config.cwd,
 			data: source,
